@@ -30,8 +30,8 @@ git config --global user.name "myuser"
 git config --global user.email "myuser@email.com"
 git config --global credential.helper cache
 git clone https://github.com/alberto-bortoni/myrcfiles
-[insert username]
-[insert token]
+[inserta username]
+[inserta token]
 
 cd myrcfiles
 cp -f .bashrc ~/
@@ -64,20 +64,67 @@ sudo raspi-config
 	1. Copiar la plantilla 
 	2. pi@DIRECCIONIP pass: holamundo
 10. Installar las bases del PiCar
-	1. git clone --recursive https://github.com/alberto-bortoni/sun-founder.git
-	2. cd sun-founder
-	3. sudo ./install_dependencies
-	4. reboot
-	5. deja pasar un minuto y vuelve a acceder al robot mediante Putty
-	6. cd sun-founder
-	7. picar servo-install
+	1. git clone --recursive https://github.com/alberto-bortoni/taller-robotica.git
+	2. cd ./taller-robotica
+	3. git submodule update --init --recursive
+	4. cd ./sun-founder
+	5. sudo ./install_dependencies
+	6. reboot
+	7. deja pasar un minuto y vuelve a acceder al robot mediante Putty
+	8. cd ./taller-robotica/sun-founder
+	9. picar servo-install
 		1. con esto terminas de installar el servo de direccion
-	8. picar front-wheel-test 0
-	9. picar rear-wheel-test
+	10. picar front-wheel-test 0
+	11. picar rear-wheel-test
+11. Asegurate de installar python en el PI. Probablemente ya lo tenga
+    1.  python --version
+    2.  si no tines la version 3.9.X installar
+    3.  sudo apt-get install rpi.gpio
 	
 
-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
+### Configuracion de tu computadora
+1. Installa Visual Studio Code.
+2. installa Python 3.9 de su pagina official
+   1. Agreaga a python a tu PATH
+3. Installa Anaconda de su pagina official
+   1. Abre la ventana de comando de anaconda
+   2. Recuerda que en el futuro necesitas activar este 'environment' cada vez que trabajes en este proyecto.
+```
+conda create -n taller-robotica
+conda activate taller-robotica
+conda install python=3.9
+conda install -c anaconda numpy
+conda install -c conda-forge matplotlib
+```
+4. Installa git bash en su pagina oficial
+5. Descarga el repositorio en tu computadora usando git bash
+```
+cd [algun lugar]
+git config --global user.name "myuser"
+git config --global user.email "myuser@email.com"
+git config --global credential.helper cache
+git clone --recursive https://github.com/alberto-bortoni/taller-robotica.git
+[inserta username]
+[inserta token]
+cd taller-robotica/sun-founder
+git submodule update --init --recursive
+cd ..
+git submodule update --init --recursive
+```
+6. Abre en Visual Studio Code
+   1. Archivo > abrir carpeta > (busca el repositorio taller-robotica)
+   2. Asegurate que el environment de Anaconda que creamos este siendo usado
+      1. CTRL+SHIFT+P -> "Python: select interpreter"
+      2. selecciona ('taller-robotica': conda)
+      3. Si no aparece, cierra y vuelve a abrir VSC
 
 
-nota:
+### Purebas iniciales
+1. asegurarte e tener la version mas reciente
+   1. git fetch origin main
+   2. get pull
+2. python3 taller-robotica/sun-founder/example/SunFounder_Ultrasonic_Avoidance/Ultrasonic_Avoidance.py
+
+
+## Notas:
 python-smbus no instalo
