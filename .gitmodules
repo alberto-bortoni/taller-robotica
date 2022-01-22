@@ -1,3 +1,6 @@
 [submodule "sun-founder"]
 	path = sun-founder
-	url = https://github.com/alberto-bortoni/sun-founder
+  url = https://github.com/alberto-bortoni/sun-founder.git
+[submodule "sun-founder-picar"]
+	path = sun-founder-picar
+	url = https://github.com/alberto-bortoni/sun-founder-picar.git
